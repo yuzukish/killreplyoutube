@@ -1,0 +1,315 @@
+*{
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+}
+
+.patch-notes-table {
+    width: 100%;
+    margin-top: 16px;
+    border-collapse: collapse;
+}
+
+/* Dark mode styles */
+
+:root {
+    --background-color: #ffffff;
+    --text-color: #121212;
+    --muted-color: #666666;
+    --border-color: #dddddd;
+    --logo-light-display: inline-block;
+    --logo-dark-display: none;
+    --card-color: rgba(255, 255, 255, 0.85);
+    --page-background:
+        radial-gradient(circle at 85% 20%, rgba(205, 160, 100, 0.5), transparent 55%),
+        linear-gradient(#e3e9ef, #eceeee 60%, #dde2e5);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #121212;
+        --text-color: #ffffff;
+        --muted-color: #aaaaaa;
+        --border-color: #333333;
+        --logo-light-display: none;
+        --logo-dark-display: inline-block;
+        --card-color: rgba(30, 30, 32, 0.85);
+        --page-background:
+            radial-gradient(circle at 85% 20%, rgba(130, 95, 50, 0.3), transparent 55%),
+            linear-gradient(#1c2026, #16181b 60%, #121212);
+    }
+}
+
+:root[color-theme="dark"] {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --muted-color: #aaaaaa;
+    --border-color: #333333;
+    --logo-light-display: none;
+    --logo-dark-display: inline-block;
+    --card-color: rgba(30, 30, 32, 0.85);
+    --page-background:
+        radial-gradient(circle at 85% 20%, rgba(130, 95, 50, 0.3), transparent 55%),
+        linear-gradient(#1c2026, #16181b 60%, #121212);
+}
+
+:root[color-theme="light"] {
+    --background-color: #ffffff;
+    --text-color: #121212;
+    --muted-color: #666666;
+    --border-color: #dddddd;
+    --logo-light-display: inline-block;
+    --logo-dark-display: none;
+    --card-color: rgba(255, 255, 255, 0.85);
+    --page-background:
+        radial-gradient(circle at 85% 20%, rgba(205, 160, 100, 0.5), transparent 55%),
+        linear-gradient(#e3e9ef, #eceeee 60%, #dde2e5);
+}
+
+/* 다크 모드 토글 버튼*/
+
+#toggle-darkmode {
+    position: absolute;
+    opacity: 0;
+}
+
+#toggle-darkmode:checked + .toggle-switch { 
+    background: #121212; 
+
+}
+#toggle-darkmode:checked + .toggle-switch .toggle-Button {
+    left: calc(100% - 45px);
+    background: #ffffff;
+}
+
+
+.toggle-switch {
+    width: 100px;
+    height: 50px;
+    display: block;
+    position: relative;
+    top: 2pc;
+    border-radius: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+}
+
+/* 버튼은 토글보다 작게 */
+.toggle-switch .toggle-Button {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 4px;
+    border-radius: 50%;
+    background-color: #121212;
+}
+
+.toggle-switch, .toggle-Button {
+    transition: all 0.2s ease-in;
+}
+
+html,
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* 시안의 배경 사진 대신 하늘·절벽 색 그라데이션. 사진을 쓰려면 --page-background 를 url(...) 로 교체 */
+body {
+    min-height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 clamp(16px, 2.85vw, 57px) clamp(16px, 2vw, 40px);
+    background-image: var(--page-background);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+header {
+    padding: clamp(64px, 4.6vw, 92px) 0 clamp(32px, 4vw, 80px);
+    text-align: center;
+}
+
+
+
+
+
+
+/* 로고: 테마에 맞는 이미지 하나만 표시 */
+.popup-logo,
+.popup-logo-white {
+    width: clamp(260px, 55vw, 1100px);
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+.popup-logo {
+    display: var(--logo-light-display);
+}
+
+.popup-logo-white {
+    display: var(--logo-dark-display);
+}
+
+.setting-group {
+    border-top: 1px solid var(--border-color);
+    padding: 10px 0;
+}
+
+.section-title {
+    font-size: clamp(22px, 1.6vw, 32px);
+    font-weight: 700;
+    margin: 0;
+    padding-left: 6px;
+}
+
+.row,
+.check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+}
+
+.row {
+    justify-content: space-between;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 6px;
+}
+
+/* 반투명 카드 */
+.card {
+    max-width: 1886px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: clamp(28px, 3.5vw, 70px) clamp(20px, 2.3vw, 46px) clamp(16px, 1.2vw, 24px) clamp(20px, 3.75vw, 75px);
+    border: 1px solid var(--border-color);
+    border-radius: clamp(20px, 1.8vw, 36px);
+    background-color: var(--card-color);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.header-text {
+    margin: 0;
+    font-size: clamp(26px, 2.8vw, 56px);
+    font-weight: 900;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    position: relative;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.description {
+    margin: clamp(16px, 2.4vw, 48px) 0 clamp(16px, 1.9vw, 38px);
+    font-size: clamp(15px, 1.3vw, 26px);
+    position: relative;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+/* 패치 노트(왼쪽)와 후원 버튼(오른쪽). 좁은 화면에서는 버튼이 아래로 내려감 */
+.card-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.patch-notes {
+    flex: 1 1 480px;
+    max-width: 1018px;
+    box-sizing: border-box;
+    padding: clamp(20px, 1.6vw, 32px) clamp(20px, 2vw, 40px);
+    border: 2px solid var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* 펼쳐져 있을 때만 시안처럼 긴 상자 유지 */
+.patch-notes:has(details[open]) {
+    min-height: clamp(360px, 46.5vw, 230px);
+}
+
+.patch-notes summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--text-color);
+    cursor: pointer;
+}
+
+/* ▼ 표시, 접으면 ▶ 로 회전 */
+.patch-notes summary::after {
+    content: "";
+    width: 30px;
+    height: 26px;
+    background-color: var(--text-color);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transition: transform ease-in-out 0.2s;
+}
+
+.patch-notes details:not([open]) summary::after {
+    transform: rotate(-90deg);
+}
+
+.patch-notes-table td {
+    padding: 8px 0;
+    vertical-align: baseline;
+    font-size: clamp(15px, 1.1vw, 22px);
+}
+
+.patch-notes-table .patch-version {
+    width: clamp(56px, 4.4vw, 88px);
+    font-size: clamp(16px, 1.2vw, 24px);
+    font-weight: 700;
+}
+
+.patch-notes-table .patch-date {
+    padding-left: 16px;
+    font-size: clamp(16px, 1.3vw, 26px);
+    font-weight: 300;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.donation {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.donation-image {
+    display: block;
+    width: 260px;
+    height: auto;
+}
+
+footer {
+    margin-top: clamp(40px, 8vw, 160px);
+    text-align: right;
+}
+
+.footer-text {
+    margin: 0;
+    font-size: clamp(14px, 1.2vw, 24px);
+}
+
+.footer-note {
+    margin: 8px 0 0;
+    font-size: clamp(12px, 0.85vw, 17px);
+}
+

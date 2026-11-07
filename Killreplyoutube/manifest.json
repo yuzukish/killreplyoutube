@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Killreplyoutube",
+  "description": "Filter blocked users, profanity, live chat flooding, and ad/spam comments on YouTube.",
+  "version": "1.0.0",
+  "permissions": ["storage", "contextMenus"],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "killreplyoutube-rev.1@ysh",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    },
+    "gecko_android": {
+      "strict_min_version": "142.0"
+    }
+  },
+  "background": {
+    "service_worker": "js/background.js",
+    "scripts": ["js/settings.js", "js/background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["js/settings.js", "js/filtering.js", "js/content.js"],
+      "css": ["content.css"],
+      "all_frames": true
+    }
+  ],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "64": "icons/icon-64.png"
+  },
+  "action": {
+    "default_popup": "index-Killreplyoutube.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "64": "icons/icon-64.png"
+    }
+  }
+}

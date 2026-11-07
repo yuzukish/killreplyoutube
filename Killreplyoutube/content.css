@@ -1,0 +1,12 @@
+/* Killreplyoutube가 유튜브 페이지에 넣는 스타일 환경입니다. */
+/* 건들 필요가 없는 공용 설정입니다. */
+
+.krt-hidden {
+    display: none !important;
+}
+
+html.krt-hide-replies ytd-comment-thread-renderer #replies,
+html.krt-hide-comments ytd-comments#comments,
+html.krt-hide-suggestions ytd-watch-next-secondary-results-renderer {
+    display: none !important;
+}

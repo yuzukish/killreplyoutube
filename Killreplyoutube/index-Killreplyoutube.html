@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-index.css">
+    <link rel="shortcut icon" type="image/x-icon" href="icons/icon-32.ico">
+    <title>Killreplyoutube</title>
+</head>
+<body>
+
+    <h1 class="popup-title">
+        <!-- 밝은 테마: 기본 로고 / 어두운 테마: 흰색 로고 (style-index.css에서 전환) -->
+        <img src="images/logo-killreplyoutube.svg" alt="Killreplyoutube" class="popup-logo">
+        <img src="images/logo-killreplyoutube-white.svg" alt="Killreplyoutube" class="popup-logo-white">
+    </h1>
+
+    <section class="setting-group">
+        <h2 class="section-title">사용자 차단하기</h2>
+        <form class="handle-form" id="handle-form">
+            <input type="text" id="handle-input" placeholder="@핸들 또는 채널 주소 (예:@killreplyoutube)" autocomplete="off">
+            <button type="submit" class="action-button">차단</button>
+        </form>
+        
+        <ul class="handle-list" id="handle-list"></ul>
+        <p class="hint">댓글 작성자 이름을 우클릭해서 추가할 수 있습니다</p>
+
+        <p class="list">차단된 사용자 목록</p>
+        <form class="clear-form" id="clear-form">
+            <button type="submit" class="action-button">전체 해제</button>
+        </form>
+
+        <p class="hint">차단된 사용자를 모두 해제합니다</p>
+        <input type="text" id="search-input" placeholder="차단된 사용자 검색" autocomplete="off">
+            <ul class="search-results" id="search-results"></ul>
+            <p class="hint">검색 결과를 클릭하면 차단 해제됩니다</p>
+
+    <p class="list">차단된 사용자</p>
+    <form>
+        <fieldset>
+            <legend>차단된 사용자 목록</legend>
+            <ul class="blocked-handles" id="blocked-handles">
+                <li class="alert">지금은 차단된 사용자가 없습니다.</li>
+            </ul>
+        </fieldset>
+    </form>
+        <p class="hint">차단된 사용자는 댓글을 작성할 수 없습니다.</p>
+    </section>
+
+    <section class="setting-group">
+        <h2 class="section-title">욕설 가리기</h2>
+        <div class="column">
+            <label for="custom-words">금지어 (한 줄에 하나)</label>
+            <textarea id="custom-words" data-setting="customWords" rows="3"></textarea>
+        </div>
+        <p class="hint">내장 목록은 없습니다. 비워 두면 욕설 필터가 동작하지 않습니다</p>
+
+        <div class="row">
+            <label for="profanity-action">걸렸을 때</label>
+            <select id="profanity-action" data-setting="profanityAction">
+                <option value="mask">별표로 가리기</option>
+                <option value="hide">댓글 숨기기</option>
+            </select>
+        </div>
+        <div class="row">
+            <label for="profanity-level">판정 기준</label>
+            <select id="profanity-level" data-setting="profanityLevel">
+                <option value="loose">우회 표기까지 (ㅅ ㅂ)</option>
+                <option value="exact">적은 그대로만</option>
+            </select>
+        </div>
+    </section>
+
+    <section class="setting-group">
+        <h2 class="section-title">광고·스팸 걸러내기</h2>
+        <div class="check">
+            <input type="checkbox" id="spam-filter" data-setting="spamFilter">
+            <label for="spam-filter">광고·스팸 댓글 숨기기</label>
+        </div>
+        <div class="row">
+            <label for="spam-sensitivity">민감도</label>
+            <select id="spam-sensitivity" data-setting="spamSensitivity">
+                <option value="low">낮음</option>
+                <option value="medium">보통</option>
+                <option value="high">높음</option>
+            </select>
+        </div>
+        <p class="hint">링크, 연락처 유도, 문자·이모지 반복을 기준으로 판단합니다</p>
+    </section>
+
+    <section class="setting-group">
+        <h2 class="section-title">실시간 채팅 도배</h2>
+        <div class="check">
+            <input type="checkbox" id="chat-flood" data-setting="chatFlood">
+            <label for="chat-flood">도배 채팅 숨기기</label>
+        </div>
+        <div class="row">
+            <label for="chat-flood-max">10초 안에 허용할 횟수</label>
+            <input type="number" id="chat-flood-max" data-setting="chatFloodMax" min="1" max="30">
+        </div>
+        <p class="hint">방송 주인과 매니저의 채팅은 걸러내지 않습니다</p>
+    </section>
+
+    <section class="setting-group">
+        <h2 class="section-title">화면에서 숨기기</h2>
+        <div class="check">
+            <input type="checkbox" id="hide-replies" data-setting="hideReplies">
+            <label for="hide-replies">답글</label>
+        </div>
+        <div class="check">
+            <input type="checkbox" id="hide-comments" data-setting="hideComments">
+            <label for="hide-comments">댓글 전체</label>
+        </div>
+        <div class="check">
+            <input type="checkbox" id="hide-suggestions" data-setting="hideSuggestions">
+            <label for="hide-suggestions">추천 영상</label>
+        </div>
+    </section>
+
+
+    <!-- 다크 모드 버튼 -->
+   <!-- <div class="dark-mode-index">
+        <button class="dark-mode-toggle" id="dark-mode-toggle">Toggle Dark Mode</button>
+    </div>-->
+  
+    <h1 class="dark-mode-title">다크 모드 전환</h1>
+    <input type="checkbox" id="toggle-darkmode" hidden>
+    <label for="toggle-darkmode" class="toggle-switch">
+        <span class="toggle-Button"></span>
+    </label>
+
+
+    <script src="js/settings.js"></script>
+    <script src="js/darkmode.js"></script>
+    <script src="popup/popup.js"></script>
+</body>
+</html>

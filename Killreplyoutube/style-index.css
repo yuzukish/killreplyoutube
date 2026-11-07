@@ -1,0 +1,238 @@
+*{
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* 다크 모드 토글 버튼*/
+
+.dark-mode-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#toggle-darkmode {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+
+#toggle-darkmode:checked + .toggle-switch { 
+    background: #121212; 
+
+}
+#toggle-darkmode:checked + .toggle-switch .toggle-Button {
+    left: calc(100% - 20px);
+    background: #ffffff;
+}
+
+
+.toggle-switch {
+    width: 40px;
+    height: 20px;
+    display: block;
+    position: relative;
+    top: 2pc;
+    border-radius: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+}
+
+/* 버튼은 토글보다 작게 */
+.toggle-switch .toggle-Button {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 4px;
+    border-radius: 50%;
+    background-color: #121212;
+}
+
+.toggle-switch, .toggle-Button {
+    transition: all 0.2s ease-in;
+}
+
+/* 기본값 설정 */
+:root {
+    --background-color: #ffffff;
+    --text-color: #121212;
+    --muted-color: #666666;
+    --border-color: #dddddd;
+    --logo-light-display: inline-block;
+    --logo-dark-display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #121212;
+        --text-color: #ffffff;
+        --muted-color: #aaaaaa;
+        --border-color: #333333;
+        --logo-light-display: none;
+        --logo-dark-display: inline-block;
+    }
+}
+
+/* 버튼으로 지정한 테마가 시스템 설정보다 우선 적용 */
+
+:root[color-theme="dark"] {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --muted-color: #aaaaaa;
+    --border-color: #333333;
+    --logo-light-display: none;
+    --logo-dark-display: inline-block;
+}
+
+:root[color-theme="light"] {
+    --background-color: #ffffff;
+    --text-color: #121212;
+    --muted-color: #666666;
+    --border-color: #dddddd;
+    --logo-light-display: inline-block;
+    --logo-dark-display: none;
+}
+
+html,
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+body {
+    width: 320px;
+    margin: 0;
+    padding: 12px 16px;
+    font-size: 13px;
+}
+
+.popup-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 8px;
+}
+
+/* 로고: 테마에 맞는 이미지 하나만 표시 */
+.popup-logo,
+.popup-logo-white {
+    width: 200px;
+    height: 80px;
+    vertical-align: middle;
+}
+
+.popup-logo {
+    display: var(--logo-light-display);
+}
+
+.popup-logo-white {
+    display: var(--logo-dark-display);
+}
+
+.setting-group {
+    border-top: 1px solid var(--border-color);
+    padding: 10px 0;
+}
+
+.section-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin: 0 0 8px;
+}
+
+.row,
+.check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+}
+
+.row {
+    justify-content: space-between;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 6px;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    font: inherit;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 4px 6px;
+}
+
+input[type="number"] {
+    width: 56px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.handle-form {
+    display: flex;
+    gap: 6px;
+}
+
+.handle-form input {
+    flex: 1;
+    min-width: 0;
+}
+
+.action-button {
+    background-color: #e41e1e;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.action-button:hover {
+    background-color: #2d88ff;
+}
+
+.handle-list {
+    padding: 0;
+    margin: 8px 0 0;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.handle-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 0;
+}
+
+.remove-button {
+    background: none;
+    border: none;
+    color: var(--muted-color);
+    cursor: pointer;
+}
+
+.hint {
+    color: var(--muted-color);
+    font-size: 12px;
+    margin: 6px 0 0;
+}

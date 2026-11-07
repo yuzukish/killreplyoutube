@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Killreplyoutube</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="../icons/icon-32.ico">
+</head>
+<body>
+    <!-- 다크 모드 버튼 -->
+    <!--
+    <div class="dark-mode-index">
+        <button class="dark-mode-toggle" id="dark-mode-toggle">Toggle Dark Mode</button>
+    </div> 
+    (예전 버전 코드) -->
+
+    <!-- 다크 모드 버튼 현재 버전 -->
+    <input type="checkbox" id="toggle-darkmode" hidden>
+
+    <label for="toggle-darkmode" class="toggle-switch">
+        <span class="toggle-Button"></span>
+    </label>
+
+    <!-- 안내 페이지 -->
+    <header>
+        <div class="logo-container">
+            <img src="../images/logo-killreplyoutube.svg" alt="Killreplyoutube" class="popup-logo">
+            <img src="../images/logo-killreplyoutube-white.svg" alt="Killreplyoutube" class="popup-logo-white">
+        </div>
+    </header>
+
+    <!-- 반투명 카드: 안내 문구, 패치 노트, 후원 버튼, 저작권 표기 -->
+    <main class="card">
+        <h1 class="header-text">
+            KillreplYoutube를 다운로드해주셔서 감사합니다!
+        </h1>
+        <p class="description">
+            이 페이지는 정상적으로 설치되었을 때 나타나는 페이지입니다.
+        </p>
+
+        <div class="card-body">
+            <section class="patch-notes">
+                <!-- 제목 줄을 누르면 접고 펼 수 있음 -->
+                <details open>
+                    <summary>
+                        <h2 class="section-title">패치 노트</h2>
+                    </summary>
+                    <table class="patch-notes-table">
+                        <tr>
+                            <td class="patch-version">v1.0</td>
+                            <td class="patch-change">첫번째 버전. (기능 구현 및 배포)</td>
+                            <td class="patch-date">2026.10.25</td>
+                        </tr>
+                    </table>
+                </details>
+            </section>
+
+            <div class="donation">
+                <a href="https://paypal.me/shirohaneyu06/5" target="_blank">
+                    <img src="../images/paypal-me.svg" alt="paypal" class="donation-image">
+                </a>
+                <a href='https://ko-fi.com/S2L529FC55' target='_blank'>
+                    <img src="../images/support_me_on_kofi_beige.png" alt="Support me on Ko-fi" class="donation-image">
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p class="footer-text">
+                &copy; 2026 ysh. All rights reserved.
+            </p>
+            <p class="footer-note">
+                본 확장 프로그램은 Claude Code의 도움(아주 살짝)을 받았습니다.
+            </p>
+        </footer>
+    </main>
+
+    <script src="../js/darkmode.js"></script>
+</body>
+</html>

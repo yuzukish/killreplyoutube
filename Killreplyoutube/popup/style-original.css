@@ -1,0 +1,132 @@
+*{
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+}
+
+.patch-notes-table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Dark mode styles */
+
+.dark-mode-index {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.dark-mode-toggle {
+    background-color: #ffffff;
+    color: #121212;
+    border: 2px solid #121212;
+    padding: 10px 10px;
+    cursor: pointer;
+}
+
+#dark-mode-toggle:hover {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+
+:root {
+    --background-color: #ffffff;
+    --text-color: #121212;
+    --muted-color: #666666;
+    --border-color: #dddddd;
+    --logo-light-display: inline-block;
+    --logo-dark-display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #121212;
+        --text-color: #ffffff;
+        --muted-color: #aaaaaa;
+        --border-color: #333333;
+        --logo-light-display: none;
+        --logo-dark-display: inline-block;
+    }
+}
+
+:root[color-theme="dark"] {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --muted-color: #aaaaaa;
+    --border-color: #333333;
+    --logo-light-display: none;
+    --logo-dark-display: inline-block;
+}
+
+:root[color-theme="light"] {
+    --background-color: #ffffff;
+    --text-color: #121212;
+    --muted-color: #666666;
+    --border-color: #dddddd;
+    --logo-light-display: inline-block;
+    --logo-dark-display: none;
+}
+
+html,
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+
+
+
+
+
+/* 로고: 테마에 맞는 이미지 하나만 표시 */
+.popup-logo,
+.popup-logo-white {
+    width: 200px;
+    height: 80px;
+    vertical-align: middle;
+}
+
+.popup-logo {
+    display: var(--logo-light-display);
+}
+
+.popup-logo-white {
+    display: var(--logo-dark-display);
+}
+
+.setting-group {
+    border-top: 1px solid var(--border-color);
+    padding: 10px 0;
+}
+
+.section-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin: 0 0 8px;
+}
+
+.row,
+.check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+}
+
+.row {
+    justify-content: space-between;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 6px;
+}
+
